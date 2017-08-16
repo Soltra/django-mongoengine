@@ -31,5 +31,7 @@ def patch_mongoengine_field(field_name):
         if not k in field.__dict__:
             setattr(field, k, djangoflavor.DjangoField.__dict__[k])
 
-for f in ["StringField", "ObjectIdField"]:
+for f in ["StringField", "ObjectIdField",
+          "ListField", "EmbeddedDocumentField"
+          ]:
     patch_mongoengine_field(f)
